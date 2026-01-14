@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Display Current Date And Time</title>
+</head>
+<body>
+<button onclick = "showDateAndTime()">Click to get Date and Time</button>
+<p id = "result"> Date and time will be appear here</p>
+<script>
+function showDateAndTime(){
+var timeanddate = new Date();
+document.getElementById("result").innerHTML = timeanddate;
+}
+</script>
+</body>
+</html>

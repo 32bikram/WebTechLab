@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> add two numbers using DOM </title>
+</head>
+<body>
+<h3> ADD TWO NUMS </h3>
+<input type = "number" id = "num1" placeholder = "Enter first Number">
+<input type = "number" id = "num2" placeholder = "Enter Second Number">
+<button onclick = "addNumbers()">Add</button>
+<p id = "result"> Result will be shown here</p>
+<script>
+function addNumbers(){
+var a = parseInt(document.getElementById("num1").value);
+var b = parseInt(document.getElementById("num2").value);
+document.getElementById("result").innerHTML = "Sum =" + (a + b);
+}
+</script>
+</body>
