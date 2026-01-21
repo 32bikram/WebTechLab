@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Textbox Validation</title>
+<style>
+    .warning {
+        color: red;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<input type="text" id="name" placeholder="Enter your name">
+<br><br>
+
+<button onclick="validate()">Submit</button>
+
+<p id="warn" class="warning">Textbox cannot be empty</p>
+
+<script>
+function validate(){
+    let value = document.getElementById("name").value.trim();
+
+    if(value === ""){
+        document.getElementById("warn").style.display = "block";
+    } else {
+        document.getElementById("warn").style.display = "none";
+        alert("Valid input");
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Display Current Date And Time</title>
+</head>
+<body>
+<button onclick = "showDateAndTime()">Click to get Date and Time</button>
+<p id = "result"> Date and time will be appear here</p>
+<script>
+function showDateAndTime(){
+const days = [
+        "Sunday", "Monday", "Tuesday",
+        "Wednesday", "Thursday", "Friday", "Saturday"];
+
+var timeanddate = new Date();
+let date_name = days[timeanddate.getDay()];
+document.getElementById("result").innerHTML = date_name;
+}
+</script>
+</body>
+</html>

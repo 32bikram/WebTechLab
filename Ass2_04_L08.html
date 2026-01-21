@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Change the background </title>
+</head>
+<body>
+<h3>CLICK THE BUTTON</h3>
+<button onclick = "change()">USE ME</button>
+<script>
+function change(){
+let r = Math.floor(Math.random() * 256);
+let g = Math.floor(Math.random() * 256);
+let b = Math.floor(Math.random() * 256);
+document.body.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+}
+</script>
+</body>
+</html>

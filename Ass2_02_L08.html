@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Show Square and Cube</title>
+</head>
+<body>
+<input type = "number" id = "num" placeholder = "Enter the Number Here">
+<p>
+RESULT -> <span id = "res"> Waitng for response.....
+</p>
+<button onclick = "return_sq_cube()">Click here</button>
+<script>
+function return_sq_cube(){
+var a = parseInt(document.getElementById("num").value);
+let b = a*a;
+let c = b*a;
+document.getElementById("res").innerHTML = "Square =" + (b) + ", cube =" + (c);
+}
+</script>
+</body>
+</html>
