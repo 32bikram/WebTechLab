@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+<title>Displays number in words</title>
+</head>
+<body>
+<input type = "text" id = "num" placeholder = "Number between 0 to 999">
+<button onclick = "convert()">Convert</button>
+<p id = "res">This Will be changed to number</p>
+<script>
+  function convert(){
+    let a = document.getElementById("num").value;
+    if(!/^\d+$/.test(a)){
+    document.getElementById("res").innerText = "Enter only numbers";
+    return;
+    }
+    let b = parseInt(a);
+    if(b<0 || b>999){
+    document.getElementById("res").innerText = "Enter number between 0-999";
+    return;
+    }
+    document.getElementById("res").innerText = convertToText(b);
+  }
+  function convertToText(a){
+    const ones = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"];
+    const teens = ["Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen", "Sixteen","Seventeen","Eighteen","Nineteen"];
+    const tens = ["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+    if(a<10) return ones[a];
+    if(a<20) return teens[a%10];
+    if(a<100){
+      let str = "";
+      str += tens[Math.floor(a/10)];
+      a = (a%10);
+      str += ones[a];
+      return str;
+    }
+    if(a<=999){
+      if(a/100===1) return "One Hundred";
+      if(a%100===0){
+        return ones[Math.floor(a/100)]+" Hundred";
+      }
+      let str = "";
+      str += ones[Math.floor(a/100)]+" Hundred";
+      a = (a%100);
+      str += " "+tens[Math.floor(a/10)];
+      a = a%10;
+      str += " "+ones[a];
+      return str;
+    }
+  }
+</script>
+</body>
+</html>
