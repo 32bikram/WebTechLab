@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        li {
+            margin: 5px 0;
+        }
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student List Manager</h2>
+
+    <input type="text" id="studentName" placeholder="Enter student name">
+    <button onclick="addStudent()">Add Student</button>
+
+    <h3>Students:</h3>
+    <ul id="studentList"></ul>
+
+    <h3>Total Students: <span id="totalCount">0</span></h3>
+
+<script>
+
+    function addStudent() {
+        const input = document.getElementById("studentName");
+        const name = input.value.trim();
+
+        if (name === "") {
+            alert("Enter a valid name");
+            return;
+        }
+
+        // Create list item
+        const li = document.createElement("li");
+
+        // Add student name text
+        li.textContent = name;
+
+        // Create remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+
+        // Remove functionality
+        removeBtn.onclick = function() {
+            li.remove();
+            updateCount();
+        };
+
+        // Append button to list item
+        li.appendChild(removeBtn);
+
+        // Append list item to ul
+        document.getElementById("studentList").appendChild(li);
+
+        input.value = "";
+        updateCount();
+    }
+
+    function updateCount() {
+        const total = document.getElementById("studentList").children.length;
+        document.getElementById("totalCount").textContent = total;
+    }
+
+</script>
+
+</body>
+</html>
