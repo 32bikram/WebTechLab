@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch JSON Students</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input {
+            padding: 6px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Records</h2>
+
+    <input type="text" id="searchBox" placeholder="Search by name..." onkeyup="searchStudent()">
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+<script>
+let studentData = [];
+
+// Fetch JSON file
+fetch('students.json')
+.then(response => response.text())     // get raw text
+.then(data => {
+    studentData = JSON.parse(data);    // convert to JS object
+    displayTable(studentData);
+})
+.catch(error => console.log("Error loading JSON:", error));
+
+
+// Display table function
+function displayTable(data) {
+    let tbody = document.querySelector("#studentTable tbody");
+    tbody.innerHTML = "";
+
+    data.forEach(student => {
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${student.id}</td>
+            <td>${student.name}</td>
+            <td>${student.branch}</td>
+            <td>${student.marks}</td>
+        `;
+
+        tbody.appendChild(row);
+    });
+}
+
+
+// Search function
+function searchStudent() {
+    let input = document.getElementById("searchBox").value.toLowerCase();
+
+    let filtered = studentData.filter(student =>
+        student.name.toLowerCase().includes(input)
+    );
+
+    displayTable(filtered);
+}
+</script>
+
+</body>
+</html>
